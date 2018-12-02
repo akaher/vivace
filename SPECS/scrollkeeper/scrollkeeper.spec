@@ -10,7 +10,7 @@ Distribution:	Photon
 Source0:        http://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz
 %define sha1 scrollkeeper=0462799a2d96f46dec76f2fd057e2dfe8d7cb94d
 
-BuildRequires:  libxslt docbook-xml docbook-xsl intltool
+BuildRequires:  libxslt-devel docbook-xml docbook-xsl intltool
 Requires:	libxslt docbook-xml docbook-xsl
 
 %description
@@ -18,8 +18,7 @@ ScrollKeeper is a cataloging system for documentation on open systems. It manage
 %prep
 %setup -q
 %build
-./configure --prefix=%{_prefix} \
-            --sysconfdir=%{_sysconfdir}
+%configure
 make %{?_smp_mflags}
 %install
 make DESTDIR=%{buildroot} install 
@@ -29,10 +28,10 @@ make DESTDIR=%{buildroot} install
 %{_bindir}/*
 %{_libdir}/*
 %exclude %{_libdir}/debug
-/usr/man
-%{_datadir}/
-%{_sysconfdir}/
-/usr/var
+%{_mandir}/*
+%{_datadir}/*
+%{_sysconfdir}/*
+%{_localstatedir}/*
 
 %changelog
 *	Mon Jun 29 2015 Harish Udaiya Kumar <hudaiyakumar@vmware.com> 0.3.14-1

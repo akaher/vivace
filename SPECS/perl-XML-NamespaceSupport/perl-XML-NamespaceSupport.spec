@@ -1,3 +1,4 @@
+%global debug_package %{nil}
 Summary:        XML::NamespaceSupport module
 Name:           perl-XML-NamespaceSupport
 Version:        1.11
@@ -24,7 +25,6 @@ make %{?_smp_mflags}
 
 %install
 make install DESTDIR=%{buildroot}
-rm %{buildroot}%{perl_vendorlib}/x86_64-linux/auto/XML/NamespaceSupport/.packlist
 find %{buildroot} -name 'perllocal.pod' -delete
 
 %check
