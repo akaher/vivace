@@ -1,18 +1,18 @@
 Summary:	Lightweight display manager
 Name:		lxdm
-Version:	0.5.0
-Release:	2
+Version:	0.5.3
+Release:	2	
 License:	GPLv2+
 URL:		http://downloads.sourceforge.net/lxde
 Group:		System Environment/Libraries
 Vendor:		VMware, Inc.
 Distribution:	Photon
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
-%define sha1 lxdm=0a91c906b3a0edd181fad74965b22ebaa9891798
+%define sha1 lxdm=8c4f7439fa7b56a97e8b19dc62af02a88ae12b45
 Source1:	lxdm.conf
 Source2:	default.png
 Source3:	greeter.ui
-BuildRequires:	gtk2-devel librsvg-devel consolekit-devel Linux-PAM systemd
+BuildRequires:	intltool gtk2-devel librsvg-devel consolekit-devel Linux-PAM-devel systemd-devel
 Requires:	lxdm-themes gtk2 librsvg consolekit Linux-PAM systemd libxcb which
 %description
 The LXDM is a lightweight Display Manager for the LXDE desktop. It can also be used as an alternative to other Display Managers such as GNOME's GDM or KDE's KDM.
@@ -55,6 +55,7 @@ EOF
 sed -i 's/ --exit-with-session//' %{buildroot}/etc/lxdm/Xsession
 
 %post
+ln -sf /lib/systemd/system/graphical.target /lib/systemd/system/default.target
 systemctl enable lxdm
 
 %preun
@@ -64,12 +65,18 @@ systemctl disable lxdm
 %defattr(-,root,root)
 %{_bindir}/*
 %{_sysconfdir}/*
-/lib/*
 %{_libexecdir}/*
+/lib/*
+%{_libdir}/*
 %{_sbindir}/*
 %{_datadir}/*
 %exclude %{_datadir}/lxdm/themes/Industrial/
+%exclude %{_libdir}/debug
 %changelog
+*	Wed Nov 15 2017 Harish Udaiya Kumar <hudaiyakumar@vmware.com> 0.5.3-2
+-	Updated build requires & requires to build with Photon 2.0
+* 	Fri Aug 26 2016	Harish Udaiya Kumar <hudaiyakumar@vmware.com> 0.5.3-1
+-	Upgraded to version 0.5.3
 *	Fri Jun 12 2015 Harish Udaiya Kumar <hudaiyakumar@vmware.com> 0.5.0-2
 -	Excluded the Industrial theme and added our custom theme as a dependency. 
 *	Fri Jun 12 2015 Alexey Makhalov <amakhalov@vmware.com> 0.5.0-1

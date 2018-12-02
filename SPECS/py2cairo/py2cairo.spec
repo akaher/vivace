@@ -11,8 +11,8 @@ Source0:        http://cairographics.org/releases/%{name}-%{version}.tar.bz2
 %define sha1 py2cairo=2efa8dfafbd6b8e492adaab07231556fec52d6eb
 BuildRequires: 	python2-devel
 BuildRequires: 	python2-libs
-BuildRequires:	cairo-devel
-Requires:	python2 cairo
+BuildRequires:	xcairo-devel
+Requires:	python2 xcairo
 
 %description
 Python bindings for Cairo.
@@ -34,6 +34,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %{_libdir}/*
 %{_includedir}/*
+%exclude /usr/lib/debug
 
 %changelog
 *	Fri May 22 2015 Alexey Makhalov <amakhalov@vmware.com> 1.10.0-1

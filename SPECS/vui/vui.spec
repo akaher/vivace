@@ -11,8 +11,8 @@ Vendor:		VMware, Inc.
 Distribution:	Photon
 Provides:	vui
 BuildArch:	noarch
-Requires:	linux-drivers-gpu lxde-common lxdm alsa-utils lxterminal firefox thunderbird gpicview grdesktop lxtask nemiver anjuta pidgin monodevelop pinta tomboy gpicview hicolor-icon-theme banshee gtkmm gvfs open-vm-tools >= 10.0.0-256
-
+#Requires: 	nemiver	linux-drivers-gpu lxde-common thunderbird firefox pygtk gtksourceviewmm lxdm alsa-utils lxterminal gpicview grdesktop lxtask pidgin monodevelop pinta tomboy gpicview hicolor-icon-theme banshee gvfs open-vm-tools-vivace 
+Requires: 	nemiver	linux-drivers-gpu lxde-common pygtk gtksourceviewmm lxdm alsa-utils lxterminal gpicview grdesktop lxtask pidgin gpicview hicolor-icon-theme gvfs 
 %description
 Metapackage for Vivace User Interface.
 

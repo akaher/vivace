@@ -1,3 +1,4 @@
+%global debug_package %{nil}
 Summary:	Remote Desktop Protocol client. 
 Name:		rdesktop
 Version:	1.8.3
@@ -16,8 +17,7 @@ rdesktop is an open source client for Windows Remote Desktop Services, capable o
 %prep
 %setup -q 
 %build
-./configure 	--prefix=%{_prefix} \
-		--disable-credssp \
+%configure 	--disable-credssp \
 		--disable-smartcard
 make %{?_smp_mflags}
 %install
