@@ -1,11 +1,11 @@
 Summary:	The Xorg protocol headers.
 Name:		proto
 Version:	7.7
-Release:	1
+Release:	2
 License:	MIT
 URL:		http://www.x.org/
 Group:		Development/System
-BuildArchitectures: noarch
+BuildArch:      noarch
 Vendor:		VMware, Inc.
 Distribution:	Photon
 Source0:	http://ftp.x.org/pub/individual/proto/bigreqsproto-1.1.2.tar.bz2
@@ -84,5 +84,7 @@ done
 %defattr(-,root,root)
 %{_prefix}/*
 %changelog
+*       Fri Feb 22 2019 Ajay Kaher <akaher@vmware.com> 7.7-2
+-       Fix BuildArch
 *	Fri May 15 2015 Alexey Makhalov <amakhalov@vmware.com> 7.7-1
 -	initial version

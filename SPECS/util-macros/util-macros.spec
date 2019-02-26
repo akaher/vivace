@@ -1,11 +1,11 @@
 Summary:	m4 macros used by all of the Xorg packages.
 Name:		util-macros
 Version:	1.19.0
-Release:	1
+Release:	2
 License:	MIT
 URL:		http://www.x.org/
 Group:		Development/System
-BuildArchitectures: noarch
+BuildArch:      noarch
 Vendor:		VMware, Inc.
 Distribution:	Photon
 Source0:	http://ftp.x.org/pub/individual/util/%{name}-%{version}.tar.bz2
@@ -22,5 +22,7 @@ make DESTDIR=%{buildroot} install
 %defattr(-,root,root)
 %{_prefix}/*
 %changelog
+*       Fri Feb 22 2019 Ajay Kaher <akaher@vmware.com> 1.19.0-2
+-       Fix BuildArch
 *	Fri May 15 2015 Alexey Makhalov <amakhalov@vmware.com> 1.19.0-1
 -	initial version
