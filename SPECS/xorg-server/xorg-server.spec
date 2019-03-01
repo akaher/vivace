@@ -2,7 +2,7 @@
 Summary:	The Xorg Server
 Name:		xorg-server
 Version:	1.17.1
-Release:	1
+Release:	2
 License:	MIT
 URL:		http://www.x.org/
 Group:		User Interface/X System
@@ -10,6 +10,7 @@ Vendor:		VMware, Inc.
 Distribution:	Photon
 Source0:	http://ftp.x.org/pub/individual/xserver/%{name}-%{version}.tar.bz2
 Patch0:		build-fix-xorg.patch
+Patch1:         0001_xf86Xinput_major_minor_fix.patch
 %define sha1 xorg-server=490118810a54e91c8814245c99d6285caf4985dd
 BuildRequires:	xkeyboard-config xorg-fonts pixman-devel openssl-devel mesa-devel libxkbfile-devel libXfont-devel libepoxy-devel xcb-util-keysyms-devel
 Requires:	xkeyboard-config xorg-fonts pixman openssl mesa libxkbfile libXfont libepoxy xcb-util-keysyms
@@ -25,6 +26,7 @@ It contains the libraries and header files to create applications
 %prep
 %setup -q
 %patch0	-p1
+%patch1	-p1
 
 %build
 ./configure --prefix=%{_prefix}		 \
@@ -53,5 +55,7 @@ EOF
 %defattr(-,root,root)
 %{_includedir}/*
 %changelog
-*	Wed May 20 2015 Alexey Makhalov <amakhalov@vmware.com> 1.17.1-1
--	initial version
+*   Mon Oct 22 2018 Ajay Kaher <akaher@vmware.com> 1.17.1-2
+    Apply patch 0001_xf86Xinput_major_minor_fix
+*   Wed May 20 2015 Alexey Makhalov <amakhalov@vmware.com> 1.17.1-1
+-   initial version
